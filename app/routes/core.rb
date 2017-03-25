@@ -1,3 +1,5 @@
+require 'digest'
+
 module SpearWeb
   module Routes
     class Core < Sinatra::Application
@@ -6,14 +8,11 @@ module SpearWeb
         set :public_folder, Spear.relative_to_root('public')
         set :root, Spear.relative_to_root('app')
         # set :environment, ENV.fetch('RACK_ENV') { :development }.to_sym
-
         set :method_override, true
         disable :static
 
         set :protection, except: :session_hijacking
-
         set :erb, escape_html: true
-
         set :sessions,
             :httponly     => true,
             :secure       => false,
@@ -42,6 +41,7 @@ module SpearWeb
       use Rack::Csrf
       use Rack::Flash
 
+      helpers Sinatra::ContentFor
       helpers Helpers::CommonHelper
 
       helpers do
@@ -65,8 +65,20 @@ module SpearWeb
           File.join(root_path, path)
         end
 
-        def css_url
-          @css_url || "/css/application.css?t=#{File.mtime('./public/css/application.css').to_i}"
+        def css_url(filenames)
+          css = filenames.collect do |f|
+            filepath = settings.public_folder+'/css/'+f
+            '<link href="/css/'+f+'?v='+Digest::MD5.new.file(filepath).to_s+'" rel="stylesheet" type="text/css"/>'
+          end
+          css.join
+        end
+
+        def js_url(filenames)
+          js = filenames.collect do |f|
+            filepath = settings.public_folder+'/js/'+f
+            '<script type="text/javascript" src="js/'+f+'?v='+Digest::MD5.new.file(filepath).to_s+'"></script>'
+          end
+          js.join
         end
       end
     end

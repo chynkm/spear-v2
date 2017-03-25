@@ -5,6 +5,11 @@ module SpearWeb
         @appa = 'Appa';
         erb :'home/index'
       end
+
+      # for information purpose - not being used
+      get '/home/sass' do
+        sass :'/sass/style'
+      end
     end
   end
 end

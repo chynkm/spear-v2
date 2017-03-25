@@ -1,8 +1,10 @@
 require 'rubygems'
 require 'sinatra/base'
+require 'sinatra/content_for'
 require 'active_record'
 require 'rack/csrf'
 require 'rack-flash'
+require 'sass'
 
 require_relative 'app/routes'
 require_relative 'app/helpers'
@@ -13,6 +15,10 @@ $: << File.expand_path('../', __FILE__)
 
 module SpearWeb
   class App < Sinatra::Base
+
+    not_found do
+      erb :'home/404'
+    end
 
     use Routes::Home
   end
