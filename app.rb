@@ -17,7 +17,7 @@ module SpearWeb
   class App < Sinatra::Base
 
     not_found do
-      erb :'home/404'
+     redirect '/404'
     end
 
     use Routes::Home

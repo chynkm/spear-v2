@@ -1,5 +1,5 @@
 module SpearWeb
   module Helpers
-    autoload :CommonHelper, 'app/helpers/common_helper'
+    autoload :ApplicationHelper, 'app/helpers/application_helper'
   end
 end

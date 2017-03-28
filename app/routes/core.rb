@@ -42,7 +42,7 @@ module SpearWeb
       use Rack::Flash
 
       helpers Sinatra::ContentFor
-      helpers Helpers::CommonHelper
+      helpers Helpers::ApplicationHelper
 
       helpers do
         def host
