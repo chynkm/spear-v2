@@ -1,0 +1,7 @@
+development: &default
+  foo: 'foo'
+  bar: 'bar'
+
+production:
+  <<: *default
+  bar: 'baz'

@@ -5,9 +5,11 @@ gem 'sinatra-contrib'
 gem 'rake'
 gem 'puma'
 gem 'activerecord'
+gem 'sinatra-activerecord'
 gem 'rack_csrf'
 gem 'rack-flash3'
 gem 'sass'
+gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

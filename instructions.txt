@@ -1,11 +1,18 @@
 Chart for Spear-ver2
 https://github.com/ankane/chartkick
 
-Active-Record
+http://recipes.sinatrarb.com/p/development/better_errors
 DB design
 Minispec
 CDN - cloudflare
 How to use memcached for caching pages
+pony email
+Twilio messaging support
+
+Puma
+****
+puma -C puma.rb
+pumactl -P tmp/puma/pid restart
 
 
 Nginx.conf file
@@ -42,3 +49,13 @@ server {
   }
 }
 Karthiks-MacBook-Air:tmp karthikm$
+
+Change session secret on deployment in the following code. Here secure symbol
+stands for SSL(https or http)
+
+set :sessions,
+            :httponly     => true,
+            :secure       => false,
+            :path         => '/',
+            :expire_after => 7200,
+            :secret       => 'my_long_secret'
