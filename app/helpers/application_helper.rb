@@ -10,6 +10,14 @@ module SpearWeb
         @title ? @title+' - Spear' : 'Spear'
       end
 
+      def active_menu(urls)
+        ' active' if urls.include?request.path
+      end
+
+      def project_name
+        'Spear'
+      end
+
     end
   end
 end

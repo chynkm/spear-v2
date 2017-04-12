@@ -11,7 +11,7 @@ require 'sass'
 require_relative 'app/routes'
 require_relative 'app/helpers'
 require_relative 'app/models'
-require_relative 'app/spear'
+require_relative 'lib/spear'
 
 # To get autoload working correctly, you'll also need to ensure that the current directory is in the app's load path.
 # You can do this by appending the CWD to the $LOAD_PATH (aliased to $:). Add the following to app.rb:
@@ -30,6 +30,7 @@ module SpearWeb
     end
 
     use Routes::Home
+    use Routes::Server
   end
 end
 

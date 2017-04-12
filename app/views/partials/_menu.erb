@@ -7,11 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<%= url('/') %>">Project name</a>
+      <a class="navbar-brand" href="<%= url('/') %>"><%= project_name %></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="<%= active_menu(['/']) %>"><a href="<%= url('/') %>"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>&nbsp;Home</a></li>
+        <li class="<%= active_menu(%w(/servers /servers/new)) %>"><a href="<%= url('/servers') %>"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp;Servers</a></li>
+        <li class="<%= active_menu(%w{/ports /ports/new}) %>"><a href="<%= url('/ports') %>"><span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>&nbsp;Ports</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
         <li class="dropdown">

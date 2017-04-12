@@ -11,8 +11,9 @@
 
     <title><%= title %></title>
     <%# csrf_meta_tags %>
-    <%= css_url %w(bootstrap.min.css style.css) %>
+    <%= css_url %w(bootstrap.min.css) %>
     <%= yield_content :css %>
+    <%= css_url %w(style.css) %>
   </head>
 
   <body>
@@ -25,7 +26,7 @@
 
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">&copy; <%= Time.now.year %> Spear</p>
+        <p class="text-muted">&copy; <%= Time.now.year %> <%= project_name %></p>
       </div>
     </footer>
 
