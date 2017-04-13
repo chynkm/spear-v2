@@ -82,6 +82,7 @@ DEPENDENCIES
   activerecord
   mail
   mina
+  minitest
   pg
   puma
   rack-flash3

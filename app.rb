@@ -30,9 +30,8 @@ module SpearWeb
     end
 
     use Routes::Home
-    use Routes::Server
+    use Routes::Host
+    use Routes::Port
   end
 end
 
-# To easily access models in the console
-include SpearWeb::Models

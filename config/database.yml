@@ -10,3 +10,7 @@ development: &default
 production:
   <<: *default
   database: spear
+
+test:
+  <<: *default
+  database: spear_test

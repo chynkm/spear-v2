@@ -76,7 +76,7 @@ module SpearWeb
         def js_url(filenames)
           js = filenames.collect do |f|
             filepath = settings.public_folder+'/js/'+f
-            '<script type="text/javascript" src="js/'+f+'?v='+Digest::MD5.new.file(filepath).to_s+'"></script>'
+            '<script type="text/javascript" src="/js/'+f+'?v='+Digest::MD5.new.file(filepath).to_s+'"></script>'
           end
           js.join
         end

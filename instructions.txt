@@ -3,6 +3,26 @@ Puma
 puma -C puma.rb
 pumactl -P tmp/puma/pid restart
 
+PGSQL
+**************
+For logging into Postgres Admin user panel in Mac(where karthikm is the Mac OS username)
+sudo psql -U karthikm postgres
+
+CREATE DATABASE spear;
+CREATE ROLE spear LOGIN;
+ALTER ROLE spear WITH PASSWORD 'spear';
+
+switching DB to SPEAR
+# \c spear
+Listing DB's
+# \l
+
+ALTER DATABASE spear OWNER TO spear;
+
+TESTING
+**************
+bundle exec rake db:migrate RACK_ENV=test
+
 Active record
 **************
 bundle exec rake db:create_migration NAME=create_servers
@@ -42,6 +62,18 @@ server {
 }
 Karthiks-MacBook-Air:tmp karthikm$
 
+////////////////////////////////
+  $('#probe_interval').ionRangeSlider({
+      min: 1,
+      max: 60,
+      grid: true,
+      prefix: 'Every ',
+      postfix: ' mins',
+      from: 1,
+      values: [10, 15, 30, 45, 1, 2, .... 60]
+  });
+////////////////////////////////
+
 ////////////////
 // Objectives //
 ////////////////
@@ -65,11 +97,13 @@ Karthiks-MacBook-Air:tmp karthikm$
 Forms and listing for Website and Port
 Offloading to Redis and Go-lang setup
 User Registration
+  - bcrypt for Authentication
+  - https://github.com/hassox/warden/wiki
 User session handling
 Alerting
 
 Chart for Spear-ver2 - https://github.com/ankane/chartkick
-Range slider - https://github.com/IonDen/ion.rangeSlider
+Range slider - https://github.com/IonDen/ion.rangeSlider - start with mins, Once GO is up and running - change to secs
 
 Spinner - http://stackoverflow.com/a/19365031
 
@@ -80,6 +114,7 @@ Minispec
 CDN - cloudflare
 How to use memcached for caching pages
 Twilio messaging support
+Time in server to be UTC
 
 Two Servers - 1 from India(Digital Ocean) and 1 from Iceland - Europe (AWS)
 
