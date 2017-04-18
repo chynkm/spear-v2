@@ -81,7 +81,12 @@ Karthiks-MacBook-Air:tmp karthikm$
 1) Website monitoring -
   In addition, customers enjoy Pingdom’s reliability which allows us to filter out false alerts using a second opinion process
   to double-check downtime from another location before we consider the website or application as down.
+
+  Get Domain to IP mapping and Store the IP address. Also store the Expiry information.
+  Run a cron which will update IP info periodically
+
 2) Port monitoring
+  Find the shortest hop server from Iceland and Singapore. Register it and use it as the primary server for monitoring.
 3) Alerting (incident notification)
   a) Email
   b) SMS - Twilio
@@ -89,6 +94,7 @@ Karthiks-MacBook-Air:tmp karthikm$
 4) Charts with mean load-time across period
 5) Weekly & Monthly reports
 6) Slow response website monitoring
+7) Handle support for IPV6
 
 ///////////////
 // Resources //

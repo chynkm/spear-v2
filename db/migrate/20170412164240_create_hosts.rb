@@ -4,6 +4,7 @@ class CreateHosts < ActiveRecord::Migration[5.0]
       t.string :name, limit: 255
       t.text :url
       t.integer :probe_interval
+
       t.timestamps
     end
   end

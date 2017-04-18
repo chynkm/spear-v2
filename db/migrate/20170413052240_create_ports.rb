@@ -5,6 +5,7 @@ class CreatePorts < ActiveRecord::Migration[5.0]
       t.integer :port
       t.string :name, limit: 255
       t.integer :probe_interval
+
       t.timestamps
     end
   end
