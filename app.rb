@@ -5,7 +5,7 @@ require 'sinatra/config_file'
 require 'active_record'
 require 'sinatra/activerecord'
 require 'rack/csrf'
-require 'rack-flash'
+require 'sinatra/flash'
 require 'sass'
 
 require_relative 'app/routes'
@@ -29,9 +29,9 @@ module SpearWeb
      redirect '/404'
     end
 
-    use Routes::Home
-    use Routes::Host
-    use Routes::Port
+    use Routes::HomeRoute
+    use Routes::HostRoute
+    use Routes::PortRoute
   end
 end
 

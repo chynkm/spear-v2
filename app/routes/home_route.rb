@@ -1,6 +1,6 @@
 module SpearWeb
   module Routes
-    class Home < Core
+    class HomeRoute < CoreRoute
       get '/' do
         @title = 'Home'
         erb :'home/index', :locals => { :appa => 'Appa' }

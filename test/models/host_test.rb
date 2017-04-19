@@ -9,7 +9,7 @@ class HostTest < MiniTest::Test
 
   # runs before every test
   def setup
-    @host = Host.new(name: 'Server 1', url: 'http://spearweb.com')
+    @host = Host.new(name: 'Server 1', url: 'http://spearweb.com', probe_interval: 1)
   end
 
   def test_name_is_required
@@ -59,9 +59,28 @@ class HostTest < MiniTest::Test
     refute @host.valid?, '11.1 is invalid IP'
   end
 
-  def test_invalid_ip1
+  def test_invalid_ip_with_string
     @host.url = 'aaaa'
     refute @host.valid?, 'aaaa is invalid IP'
+  end
+
+  def test_probe_interval_is_required
+    assert @host.valid?, 'Probe interval is required'
+  end
+
+  def test_probe_interval_float_value
+    @host.probe_interval = 11.1
+    refute @host.valid?, 'Probe interval does not support float'
+  end
+
+  def test_probe_interval_int_value
+    @host.probe_interval = 11
+    assert @host.valid?, 'Probe interval supports int'
+  end
+
+  def test_probe_interval_string_value
+    @host.probe_interval = ''
+    refute @host.valid?, 'Probe interval does not support string'
   end
 
 end

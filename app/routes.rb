@@ -1,8 +1,8 @@
 module SpearWeb
   module Routes
-    autoload :Core, 'app/routes/core'
-    autoload :Home, 'app/routes/home'
-    autoload :Host, 'app/routes/host'
-    autoload :Port, 'app/routes/port'
+    autoload :CoreRoute, 'app/routes/core_route'
+    autoload :HomeRoute, 'app/routes/home_route'
+    autoload :HostRoute, 'app/routes/host_route'
+    autoload :PortRoute, 'app/routes/port_route'
   end
 end

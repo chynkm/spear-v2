@@ -1,6 +1,6 @@
 module SpearWeb
   module Routes
-    class Port < Core
+    class PortRoute < CoreRoute
       get '/ports' do
         @title = 'Port'
         erb :'port/index'
