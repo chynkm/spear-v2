@@ -3,7 +3,8 @@ module SpearWeb
     class HostRoute < CoreRoute
       get '/hosts' do
         @title = 'Server'
-        erb :'host/index'
+        hosts = Host.paginate(:page => params[:page], :per_page => 5)
+        erb :'host/index', locals: { hosts: hosts }
       end
 
       get '/hosts/new' do
@@ -18,8 +19,8 @@ module SpearWeb
           flash[:notice] = 'Host saved successfully'
           redirect to('/hosts')
         else
-          # flash[:host] = params[:host]
           flash[:errors] = host.errors
+          save_form_data_to_flash(params[:host])
           redirect back
         end
       end

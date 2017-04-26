@@ -7,6 +7,8 @@ require 'sinatra/activerecord'
 require 'rack/csrf'
 require 'sinatra/flash'
 require 'sass'
+require 'will_paginate'
+require 'will_paginate/active_record'
 
 require_relative 'app/routes'
 require_relative 'app/helpers'
@@ -24,6 +26,8 @@ module SpearWeb
 
     register Sinatra::ActiveRecordExtension
     set :database_file, Spear.relative_to_root('config/database.yml')
+
+    register WillPaginate::Sinatra::Helpers
 
     not_found do
      redirect '/404'

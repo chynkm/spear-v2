@@ -63,6 +63,23 @@ module SpearWeb
         Rack::Csrf.csrf_tag(env)
       end
 
+      def save_form_data_to_flash(params)
+        params.each do |key, value|
+          flash[key.to_sym] = value
+        end
+      end
+
+      def paginate(collection)
+        options = {
+          #renderer: BootstrapPagination::Sinatra,
+          inner_window: 0,
+          outer_window: 0,
+          previous_label: '&laquo;',
+          next_label: '&raquo;'
+        }
+        will_paginate collection, options
+      end
+
     end
   end
 end

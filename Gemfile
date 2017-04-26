@@ -11,6 +11,7 @@ gem 'sinatra-flash'
 gem 'sass'
 gem 'pg'
 gem 'mail'
+gem 'will_paginate'
 # gem 'sidekiq'
 
 group :development, :test do
