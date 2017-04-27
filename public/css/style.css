@@ -38,3 +38,8 @@ code {
 .no_trailing .irs-bar, .no_trailing .irs-bar-edge {
   background-image: none;
 }
+.alert_margin_top {
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+

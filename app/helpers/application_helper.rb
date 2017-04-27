@@ -71,11 +71,10 @@ module SpearWeb
 
       def paginate(collection)
         options = {
-          #renderer: BootstrapPagination::Sinatra,
-          inner_window: 0,
-          outer_window: 0,
+          inner_window: 1,
+          outer_window: 1,
           previous_label: '&laquo;',
-          next_label: '&raquo;'
+          next_label: '&raquo;',
         }
         will_paginate collection, options
       end

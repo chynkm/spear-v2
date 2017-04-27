@@ -1,0 +1,5 @@
+<% unless flash[:status].nil? %>
+<div class="alert alert_margin_top <%= flash[:status] === true ? 'alert-success' : 'alert-danger' %>" role="alert">
+  <%= flash[:message] %>
+</div>
+<% end %>

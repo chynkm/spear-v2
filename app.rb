@@ -14,6 +14,7 @@ require_relative 'app/routes'
 require_relative 'app/helpers'
 require_relative 'app/models'
 require_relative 'lib/spear'
+require_relative 'lib/will_paginate'
 
 # To get autoload working correctly, you'll also need to ensure that the current directory is in the app's load path.
 # You can do this by appending the CWD to the $LOAD_PATH (aliased to $:). Add the following to app.rb:
@@ -28,6 +29,7 @@ module SpearWeb
     set :database_file, Spear.relative_to_root('config/database.yml')
 
     register WillPaginate::Sinatra::Helpers
+    WillPaginate::per_page = 10
 
     not_found do
      redirect '/404'
