@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413052240) do
+ActiveRecord::Schema.define(version: 20170430111232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20170413052240) do
     t.string   "name",           limit: 255
     t.text     "url"
     t.integer  "probe_interval"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "active",         limit: 2,   default: 1, null: false
   end
 
   create_table "ports", force: :cascade do |t|
@@ -28,8 +29,9 @@ ActiveRecord::Schema.define(version: 20170413052240) do
     t.integer  "port"
     t.string   "name",           limit: 255
     t.integer  "probe_interval"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "active",         limit: 2,   default: 1, null: false
   end
 
 end

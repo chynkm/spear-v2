@@ -27,6 +27,20 @@ Active record
 **************
 bundle exec rake db:create_migration NAME=create_servers
 
+class AddColumnActive < ActiveRecord::Migration[5.0]
+  def change
+    change_table(:hosts) do |t|
+      t.column :active, :integer, default: 1, null: false, limit: 2, after: 'probe_interval'
+    end
+
+    change_table(:ports) do |t|
+      t.column :active, :integer, default: 1, null: false, limit: 2, after: 'probe_interval'
+    end
+  end
+end
+
+bundle exec rake db:rollback
+
 Nginx.conf file
 ***************
 Karthiks-MacBook-Air:tmp karthikm$ cat /usr/local/etc/nginx/sites-enabled/spear.local
@@ -121,6 +135,12 @@ CDN - cloudflare
 How to use memcached for caching pages
 Twilio messaging support
 Time in server to be UTC
+
+Validate hostname or IP when its entered in the text input
+
+Toastr
+Noty
+Pnotify
 
 Two Servers - 1 from India(Digital Ocean) and 1 from Iceland - Europe (AWS)
 

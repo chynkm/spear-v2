@@ -3,31 +3,42 @@
 <% end %>
 
 <div class="page-header">
-  <h1>Ports - Add</h1>
+  <h1>Ports - <%= port.id.nil? ? 'Add' : 'Edit' %></h1>
 </div>
-<form class="form-horizontal">
-  <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Host</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="name" name="name" placeholder="Hostname or IP">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="name" class="col-sm-2 control-label">Port</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="name" name="name" placeholder="Port number">
-    </div>
-  </div>
+<% if flash[:errors] %>
+<div class="alert alert-danger" role="alert">
+  <% flash[:errors].each do |key, value| %>
+  The&nbsp;<strong><%= key.to_s.upcase_first %></strong>&nbsp;field&nbsp;<%= value %><br/>
+  <% end %>
+</div>
+<% end %>
+<form class="form-horizontal" action="<%= port.id.nil? ? url('/ports') : url("/ports/#{port.id}") %>" method="post">
+  <%= csrf_tag %>
+  <% unless port.id.nil? %>
+  <input type="hidden" name="_method" value="patch">
+  <% end %>
   <div class="form-group">
     <label for="name" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+      <input type="text" class="form-control" id="name" name="port[name]" placeholder="Name" value="<%= flash[:name] || port.name %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="host" class="col-sm-2 control-label">Host</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="host" name="port[host]" placeholder="Domain name or IPv4 address" value="<%= flash[:host] || port.host %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="port" class="col-sm-2 control-label">Port</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="port" name="port[port]" placeholder="Port number" value="<%= flash[:port] || port.port %>">
     </div>
   </div>
   <div class="form-group">
     <label for="probe_interval" class="col-sm-2 control-label">Probe interval</label>
     <div class="col-sm-8 no_trailing">
-      <input type="text" class="form-control" id="probe_interval" name="probe_interval" value="">
+      <input type="text" class="form-control" id="probe_interval" name="port[probe_interval]" value="" data-from="<%= flash[:probe_interval] || port.probe_interval %>">
     </div>
   </div>
   <div class="form-group">

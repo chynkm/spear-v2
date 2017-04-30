@@ -55,6 +55,7 @@ module SpearWeb
         end
         js.join
       end
+
       def csrf_token
         Rack::Csrf.csrf_token(env)
       end
@@ -63,10 +64,15 @@ module SpearWeb
         Rack::Csrf.csrf_tag(env)
       end
 
-      def save_form_data_to_flash(params)
+      # Port validation failure
+      # @author Karthik M
+      # @return redirect
+      def form_validation_fails(errors, params)
+        flash[:errors] = errors
         params.each do |key, value|
           flash[key.to_sym] = value
         end
+        redirect back
       end
 
       def paginate(collection)

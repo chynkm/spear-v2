@@ -1,5 +1,6 @@
 module SpearWeb
   module Routes
+    # Core route - All route use Core as base
     class CoreRoute < Sinatra::Application
 
       configure do

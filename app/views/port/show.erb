@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>
+    Ports - View
+  </h1>
+</div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <ul class="stats-overview-port">
+      <li>
+        <span class="name">Name</span>
+        <span class="value text-primary"><%= port.name %></span>
+      </li>
+      <li>
+        <span class="name">Host</span>
+        <span class="value text-primary"><%= port.host %></span>
+      </li>
+      <li class="hidden-phone">
+        <span class="name">Port</span>
+        <span class="value text-primary"><%= port.port %></span>
+      </li>
+      <li class="hidden-phone">
+        <span class="name">Probe Interval (mins)</span>
+        <span class="value text-primary"><%= port.probe_interval %></span>
+      </li>
+    </ul>
+  </div>
+</div>
