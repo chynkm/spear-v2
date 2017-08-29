@@ -20,6 +20,7 @@ module SpearWeb
       # @author Karthik M
       # @return :erb
       get '/404' do
+        status 404
         @title = '404'
         erb :'home/404'
       end

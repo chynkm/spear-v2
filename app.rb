@@ -9,6 +9,9 @@ require 'sinatra/flash'
 require 'sass'
 require 'will_paginate'
 require 'will_paginate/active_record'
+require 'paranoia'
+require 'pry'
+require 'pry-remote'
 
 require_relative 'app/routes'
 require_relative 'app/helpers'
@@ -32,7 +35,7 @@ module SpearWeb
     WillPaginate::per_page = 10
 
     not_found do
-     redirect '/404'
+      redirect '/404'
     end
 
     use Routes::HomeRoute

@@ -12,6 +12,7 @@ gem 'sass'
 gem 'pg'
 gem 'mail'
 gem 'will_paginate'
+gem 'paranoia'
 # gem 'sidekiq'
 
 group :development, :test do
@@ -25,7 +26,6 @@ group :development do
   gem 'tux'
   # Use Mina for deployment
   gem 'mina'
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  # gem 'web-console', '>= 3.3.0'
-  # gem 'listen', '~> 3.0.5'
+  gem 'pry'
+  gem 'pry-remote'
 end

@@ -8,7 +8,7 @@ module SpearWeb
       # @return :erb
       get '/hosts' do
         @title = 'Servers'
-        hosts = Host.active.order('name ASC').paginate(page: params[:page])
+        hosts = Host.order('name ASC').paginate(page: params[:page])
         erb :'host/index', locals: { hosts: hosts }
       end
 
@@ -40,7 +40,7 @@ module SpearWeb
       # @return :erb | redirect
       get '/hosts/:id/edit' do
         @title = 'Edit Server'
-        host = Host.active.find_by_id(params[:id])
+        host = Host.find_by_id(params[:id])
         if host.nil?
           host_not_found
         else
@@ -53,7 +53,7 @@ module SpearWeb
       # @param  id :int
       # @return redirect
       patch '/hosts/:id' do
-        host = Host.active.find_by_id(params[:id])
+        host = Host.find_by_id(params[:id])
         if host.update(params[:host])
           flash[:status] = true
           flash[:message] = 'Server updated successfully'
@@ -69,11 +69,27 @@ module SpearWeb
       # @return :erb
       get '/hosts/:id' do
         @title = 'View Server'
-        host = Host.active.find_by_id(params[:id])
+        host = Host.find_by_id(params[:id])
         if host.nil?
           host_not_found
         else
           erb :'host/show', locals: { host: host }
+        end
+      end
+
+      # Toggle status
+      # @author Karthik M
+      # @param  id :int
+      # @return redirect
+      get '/hosts/:id/status' do
+        host = Host.find_by_id(params[:id])
+        if host.nil?
+          host_not_found
+        else
+          host.update(active: host.active == 1 ? 0 : 1)
+          flash[:status] = true
+          flash[:message] = 'Server has been '+(host.active == 1 ? 'enabled' : 'disabled')+' for monitoring'
+          redirect back
         end
       end
 
@@ -82,11 +98,11 @@ module SpearWeb
       # @param  id :int
       # @return redirect
       get '/hosts/:id/delete' do
-        host = Host.active.find_by_id(params[:id])
+        host = Host.find_by_id(params[:id])
         if host.nil?
           host_not_found
         else
-          host.update(active: 0)
+          host.destroy
           flash[:status] = true
           flash[:message] = 'Server deleted successfully'
           redirect back
