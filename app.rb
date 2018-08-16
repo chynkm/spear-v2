@@ -24,6 +24,8 @@ require_relative 'lib/will_paginate'
 $: << File.expand_path('../', __FILE__)
 
 module SpearWeb
+  Paginate_nos = 10
+
   class App < Sinatra::Base
     register Sinatra::ConfigFile
     config_file 'config/config.yml'
@@ -32,7 +34,7 @@ module SpearWeb
     set :database_file, Spear.relative_to_root('config/database.yml')
 
     register WillPaginate::Sinatra::Helpers
-    WillPaginate::per_page = 10
+    WillPaginate::per_page = Paginate_nos
 
     not_found do
       redirect '/404'

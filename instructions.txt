@@ -165,3 +165,49 @@ set :sessions,
 2) Persistence in REDIS for background jobs
 
 
+
+4244698141
+
+
+https://serversforhackers.com/s/load-balancing-with-nginx
+https://serversforhackers.com/s/jenkins-blue-ocean
+https://serversforhackers.com/s/managing-php-fpm
+https://serversforhackers.com/c/installing-php-7-with-memcached
+https://serversforhackers.com/s/process-monitoring
+https://serversforhackers.com/s/backup-and-recovery
+https://serversforhackers.com/c/automating-deployment-from-github
+
+
+
+require 'pry-remote'
+
+class Foo
+  def initialize(x, y)
+    binding.remote_pry
+  end
+end
+
+Foo.new 10, 20
+
+You can then connect yourself using pry-remote:
+$ pry-remote
+
+(or)
+
+require 'pry'
+
+binding.pry
+if you are running the app in development - check the console. You would have got a
+prompt :)
+
+raise object.inspect
+
+Running the application with Rack & Shotgun (using config.ru page)
+rackup -p 4567
+
+shotgun config.ru
+-> runs in 9393 port
+
+
+Change to radio = http or https
+

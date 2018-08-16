@@ -8,7 +8,7 @@ module SpearWeb
       # @return :erb
       get '/ports' do
         @title = 'Ports'
-        ports = Port.order('name ASC').paginate(page: params[:page])
+        ports = Port.order('name ASC').paginate(page: params[:page], :per_page => Paginate_nos)
         erb :'port/index', locals: { ports: ports }
       end
 

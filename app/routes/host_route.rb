@@ -8,7 +8,7 @@ module SpearWeb
       # @return :erb
       get '/hosts' do
         @title = 'Servers'
-        hosts = Host.order('name ASC').paginate(page: params[:page])
+        hosts = Host.order('name ASC').paginate(page: params[:page], :per_page => Paginate_nos)
         erb :'host/index', locals: { hosts: hosts }
       end
 
